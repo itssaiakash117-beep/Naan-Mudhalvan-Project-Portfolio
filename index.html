@@ -1,0 +1,229 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Akash Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Home Page -->
+  <div id="homePage" class="page active">
+    <h1>Hi, I am <span>Sai Akash</span></h1>
+    <p class="border-text glow">BSc Computer Science Student</p>
+    <button id="nextBtn">View My Work</button>
+  </div>
+
+  <!-- Form Page -->
+  <div id="formPage" class="page">
+    <h2 class="form-title">College Student Detail Registration</h2>
+    <form id="studentForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="college">College:</label>
+      <input type="text" id="college" placeholder="Enter your college" required>
+
+      <label for="department">Department:</label>
+      <input type="text" id="department" placeholder="Enter your department" required>
+
+      <label for="university">University:</label>
+      <input type="text" id="university" placeholder="Enter your university" required>
+
+      <label for="district">District:</label>
+      <input type="text" id="district" placeholder="Enter your district" required>
+
+      <label for="contact">Contact Number:</label>
+      <input type="tel" id="contact" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required>
+
+      <label for="sports">Sports You Are Interested In:</label>
+      <input type="text" id="sports" placeholder="Type your sports interest..." required>
+
+      <div class="buttons">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <p id="successMsg" class="hidden"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html><style>body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff0000, #0000ff);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Page containers */
+.page {
+  display: none;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  max-width: 500px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+}
+
+h1 span {
+  color: #ffe600;
+}
+
+.border-text {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #ffe600;
+  display: inline-block;
+}
+
+.glow {
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000,
+               0 0 15px #0000ff, 0 0 20px #0000ff,
+               0 0 25px #ff0000, 0 0 30px #0000ff;
+}
+
+/* Form title */
+.form-title {
+  font-size: 1.2em;        
+  margin-bottom: 15px;
+  color: #ffe600;
+  text-align: center;
+  text-shadow: 0 0 4px #ff0000, 0 0 8px #0000ff;
+  line-height: 1.4;        
+  word-wrap: break-word;   
+  white-space: normal;     
+}
+
+@media (max-width: 480px) {
+  .form-title {
+    font-size: 1em;
+  }
+}
+
+/* Buttons */
+button {
+  background: #ffe600;
+  color: black;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #ffcc00;
+  transform: scale(1.05);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 15px;
+  font-size: 1em;
+  color: white; 
+  background: rgba(255, 255, 255, 0.1);
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+input:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 8px #ffe600, 0 0 12px #ff0000;
+  border: 2px solid #ffe600;
+}
+
+/* Success message */
+#successMsg {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #00ffcc;
+  animation: popIn 0.6s ease forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .page {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  button {
+    width: 100%;
+  }
+}</style><script>// Go to form page
+document.getElementById("nextBtn").addEventListener("click", function () {
+  document.getElementById("homePage").classList.remove("active");
+  document.getElementById("formPage").classList.add("active");
+});
+
+// Handle form submit
+document.getElementById("studentForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const college = document.getElementById("college").value;
+  const department = document.getElementById("department").value;
+
+  const successMsg = document.getElementById("successMsg");
+  successMsg.textContent = `✅ ${name} from ${college} (${department}) -- details saved!`;
+  successMsg.classList.remove("hidden");
+
+  setTimeout(() => {
+    successMsg.classList.add("hidden");
+  }, 4000);
+
+  this.reset();
+});</script>
